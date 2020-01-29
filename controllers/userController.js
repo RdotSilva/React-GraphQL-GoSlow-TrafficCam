@@ -9,7 +9,7 @@ exports.findOrCreateUser = async token => {
   const googleUser = await verifyAuthToken(token);
 
   // Check if user exists
-  const user = checkIfUserExists(googleUser.email);
+  const user = await checkIfUserExists(googleUser.email);
 
   // If user exists return them otherwise create new user in DB
   return user ? user : createNewUser(googleUser);
