@@ -32,7 +32,8 @@ const verifyAuthToken = async token => {
 
 // Check if user exists in DB by checking email
 const checkIfUserExists = async email => {
-  await User.findOne({ email }).exec();
+  const result = await User.findOne({ email }).exec();
+  return result;
 };
 
 // Create new user if they don't exist in DB
