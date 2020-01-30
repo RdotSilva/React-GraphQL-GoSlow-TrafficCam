@@ -24,6 +24,7 @@ const Login = ({ classes }) => {
       const { me } = await client.request(ME_QUERY);
 
       dispatch({ type: "LOGIN_USER", payload: me });
+      dispatch({ type: "IS_LOGGED_IN", payload: googleUser.isSignedIn() });
     } catch (err) {
       onFailure(err);
     }
@@ -38,13 +39,14 @@ const Login = ({ classes }) => {
         noWrap
         style={{ color: "rgb(66, 133, 244)" }}
       >
-        Welcome
+        Go Slow
       </Typography>
       <GoogleLogin
         clientId="506161880294-2a62unmgu76hniod2gvk73llftkfqeaq.apps.googleusercontent.com"
         onSuccess={onSuccess}
         onFailure={onFailure}
         isSignedIn={true}
+        buttonText="Login to view Camera Map"
         theme="dark"
       />
     </div>
@@ -52,7 +54,7 @@ const Login = ({ classes }) => {
 };
 
 const onFailure = err => {
-  console.error("Error loggign in", err);
+  console.error("Error logging in", err);
 };
 
 const styles = {
