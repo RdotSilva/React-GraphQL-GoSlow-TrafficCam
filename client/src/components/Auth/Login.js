@@ -2,46 +2,57 @@ import React, { useContext } from "react";
 import { GoogleLogin } from "react-google-login";
 import { GraphQLClient } from "graphql-request";
 import { withStyles } from "@material-ui/core/styles";
-// import Typography from "@material-ui/core/Typography";
+import Typography from "@material-ui/core/Typography";
 
 import Context from "./../../context/context";
 
-const ME_QUERY = `
-{
-  me {
-    _id
-    name
-    email
-    picture
-  }
-}
-`;
+import { ME_QUERY } from "./../../graphql/queries";
 
 const Login = ({ classes }) => {
   const { dispatch } = useContext(Context);
 
   const onSuccess = async googleUser => {
-    const idToken = googleUser.getAuthResponse().id_token;
+    try {
+      const idToken = googleUser.getAuthResponse().id_token;
 
-    // Setup GraphQL client using graphql-request package to avoid Apollo boilerplate
-    const client = new GraphQLClient("http://localhost:4000/graphql", {
-      headers: { authorization: idToken }
-    });
+      // Setup GraphQL client using graphql-request package to avoid Apollo boilerplate
+      const client = new GraphQLClient("http://localhost:4000/graphql", {
+        headers: { authorization: idToken }
+      });
 
-    // Get current user auth info
-    const { me } = await client.request(ME_QUERY);
+      // Get current user auth info
+      const { me } = await client.request(ME_QUERY);
 
-    dispatch({ type: "LOGIN_USER", payload: me });
+      dispatch({ type: "LOGIN_USER", payload: me });
+    } catch (err) {
+      onFailure(err);
+    }
   };
 
   return (
-    <GoogleLogin
-      clientId="506161880294-2a62unmgu76hniod2gvk73llftkfqeaq.apps.googleusercontent.com"
-      onSuccess={onSuccess}
-      onFailure={onFailure}
-      isSignedIn={true}
-    />
+    <div className={classes.root}>
+      <Typography
+        component="h1"
+        variant="h3"
+        gutterBottom
+        noWrap
+        style={{ color: "rgb(66, 133, 244)" }}
+      >
+        Welcome
+      </Typography>
+      <GoogleLogin
+        clientId="506161880294-2a62unmgu76hniod2gvk73llftkfqeaq.apps.googleusercontent.com"
+        onSuccess={onSuccess}
+        onFailure={onFailure}
+        isSignedIn={true}
+        theme="dark"
+      />
+    </div>
   );
+};
+
+const onFailure = err => {
+  console.error("Error loggign in", err);
 };
 
 const styles = {
