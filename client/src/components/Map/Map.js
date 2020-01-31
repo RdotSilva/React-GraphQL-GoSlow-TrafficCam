@@ -5,6 +5,12 @@ import { withStyles } from "@material-ui/core/styles";
 // import Typography from "@material-ui/core/Typography";
 // import DeleteIcon from "@material-ui/icons/DeleteTwoTone";
 
+const viewport = {
+  latitude: 37.7577,
+  longitude: -122.4376,
+  zoom: 13
+};
+
 const Map = ({ classes }) => {
   return (
     <div className={classes.root}>
