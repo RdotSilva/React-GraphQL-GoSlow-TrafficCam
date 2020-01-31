@@ -32,6 +32,15 @@ const Map = ({ classes }) => {
     }
   };
 
+  const handleMapClick = event => {
+    const { lngLat, leftButton } = event;
+
+    if (!leftButton) return;
+    if (!state.draft) {
+      dispatch({ type: "CREATE_DRAFT" });
+    }
+  };
+
   return (
     <div className={classes.root}>
       <ReactMapGL
