@@ -75,6 +75,16 @@ const Map = ({ classes }) => {
             <PinIcon size={40} color="red" label="Your Location"></PinIcon>
           </Marker>
         )}
+        {state.draft && (
+          <Marker
+            latitude={state.draft.latitude}
+            longitude={state.draft.longitude}
+            offsetLeft={-19}
+            offsetTop={-37}
+          >
+            <PinIcon size={40} color="hotpink" label="Draft Pin"></PinIcon>
+          </Marker>
+        )}
       </ReactMapGL>
     </div>
   );
