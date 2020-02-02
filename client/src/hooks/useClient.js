@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { GraphQLClient } from "graphql-request";
 
+// Uses local host in development. Change the production-url when deploying.
 export const BASE_URL =
   process.env.NODE_ENV === "production"
     ? "production-url"
