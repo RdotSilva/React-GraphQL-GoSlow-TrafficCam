@@ -1,11 +1,5 @@
 const { AuthenticationError } = require("apollo-server");
-
-const user = {
-  _id: "1",
-  name: "Ryan",
-  email: "ryan@ryan.com",
-  picture: "www.fake.com"
-};
+const Pin = require("./models/Pin");
 
 // HOC to check if currentUser is inside of context.
 const authenticated = next => (root, args, ctx, info) => {
@@ -18,5 +12,15 @@ const authenticated = next => (root, args, ctx, info) => {
 module.exports = {
   Query: {
     me: authenticated((root, args, ctx) => ctx.currentUser)
+  },
+  Mutation: {
+    createPin: authenticated(async (root, args, ctx) => {
+      const newPin = await new Pin({
+        ...args.input,
+        author: ctx.currentUser._id
+      }).save();
+      const pinAdded = await Pin.populate(newPin, "author");
+      return pinAdded;
+    })
   }
 };
