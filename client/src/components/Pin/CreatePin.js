@@ -35,6 +35,17 @@ const CreatePin = ({ classes }) => {
           </Button>
         </label>
       </div>
+      <div className={classes.contentField}>
+        <TextField
+          name="content"
+          label="Content"
+          multiline
+          rows="6"
+          margin="normal"
+          fullWidth
+          variant="outlined"
+        />
+      </div>
     </form>
   );
 };
