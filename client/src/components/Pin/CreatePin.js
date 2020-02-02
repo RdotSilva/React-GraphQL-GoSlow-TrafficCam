@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
@@ -12,7 +12,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
+import Context from "../../context/context";
+
 const CreatePin = ({ classes }) => {
+  const { dispatch } = useContext(Context);
+
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [content, setContent] = useState("");
@@ -25,6 +29,14 @@ const CreatePin = ({ classes }) => {
 
   const handleOpen = () => {
     setOpen(true);
+  };
+
+  const handleDeleteDraft = () => {
+    setTitle("");
+    setImage("");
+    setContent("");
+    setCameraType("");
+    dispatch({ type: "DELETE_DRAFT" });
   };
 
   const handleSubmit = event => {
@@ -95,7 +107,12 @@ const CreatePin = ({ classes }) => {
         />
       </div>
       <div>
-        <Button className={classes.button} variant="contained" color="primary">
+        <Button
+          onClick={handleDeleteDraft}
+          className={classes.button}
+          variant="contained"
+          color="primary"
+        >
           <CancelIcon className={classes.leftIcon} />
           Discard
         </Button>
