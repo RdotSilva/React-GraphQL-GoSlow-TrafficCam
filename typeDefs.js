@@ -12,6 +12,7 @@ module.exports = gql`
     _id: ID
     createdAt: String
     title: String
+    type: String
     content: String
     image: String
     latitude: Float
@@ -29,6 +30,7 @@ module.exports = gql`
   input CreatePinInput {
     title: String
     image: String
+    type: String
     content: String
     latitude: Float
     longitude: Float
