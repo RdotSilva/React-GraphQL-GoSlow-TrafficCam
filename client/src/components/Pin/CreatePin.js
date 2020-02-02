@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { GraphQLClient } from "graphql-request";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
@@ -14,15 +15,17 @@ import Select from "@material-ui/core/Select";
 import axios from "axios";
 
 import Context from "../../context/context";
+import { CREATE_PIN_MUTATION } from "./../../graphql/mutations";
 
 const CreatePin = ({ classes }) => {
-  const { dispatch } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
 
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [content, setContent] = useState("");
   const [cameraType, setCameraType] = useState("");
   const [open, setOpen] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleClose = () => {
     setOpen(false);
@@ -55,8 +58,39 @@ const CreatePin = ({ classes }) => {
   };
 
   const handleSubmit = async event => {
-    event.preventDefault();
-    const url = await handleImageUpload();
+    try {
+      event.preventDefault();
+      setSubmitting(true);
+
+      // Get auth token
+      const idToken = window.gapi.auth2
+        .getAuthInstance()
+        .currentUser.get()
+        .getAuthResponse().id_token;
+
+      const client = new GraphQLClient("http://localhost:4000/graphql", {
+        headers: { authorization: idToken }
+      });
+
+      // Set up variables to use with create pin mutation
+      const url = await handleImageUpload();
+      const { latitude, longitude } = state.draft;
+      const variables = { title, image: url, content, latitude, longitude };
+
+      // Send mutation and destruct createPin data.
+      const { createPin } = await client.request(
+        CREATE_PIN_MUTATION,
+        variables
+      );
+
+      console.log("Pin Created", { createPin });
+
+      // Clear draft pin when finished creating a new pin.
+      handleDeleteDraft();
+    } catch (err) {
+      setSubmitting(false);
+      console.error("Error creating pin", err);
+    }
   };
 
   return (
@@ -136,7 +170,13 @@ const CreatePin = ({ classes }) => {
           className={classes.button}
           variant="contained"
           color="secondary"
-          disabled={!title.trim() || !content.trim() || !image || !cameraType}
+          disabled={
+            !title.trim() ||
+            !content.trim() ||
+            !image ||
+            !cameraType ||
+            submitting
+          }
           onClick={handleSubmit}
         >
           Submit
