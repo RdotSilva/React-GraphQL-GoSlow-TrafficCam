@@ -24,6 +24,10 @@ const CreatePin = ({ classes }) => {
     setOpen(false);
   };
 
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
   return (
     <form className={classes.form}>
       <Typography
