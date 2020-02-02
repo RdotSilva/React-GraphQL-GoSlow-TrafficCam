@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Context from "./../../context/context";
 
 import { ME_QUERY } from "./../../graphql/queries";
+import { BASE_URL } from "./../../hooks/useClient";
 
 const Login = ({ classes }) => {
   const { dispatch } = useContext(Context);
@@ -16,7 +17,7 @@ const Login = ({ classes }) => {
       const idToken = googleUser.getAuthResponse().id_token;
 
       // Setup GraphQL client using graphql-request package to avoid Apollo boilerplate
-      const client = new GraphQLClient("http://localhost:4000/graphql", {
+      const client = new GraphQLClient(BASE_URL, {
         headers: { authorization: idToken }
       });
 
