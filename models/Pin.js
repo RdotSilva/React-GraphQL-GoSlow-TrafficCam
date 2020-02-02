@@ -8,13 +8,13 @@ const PinSchema = new mongoose.Schema(
     latitude: Number,
     longitude: Number,
     // Populate author from user data by using the user ID
-    author: { type: mongoose.Schema.ObjectID, ref: "User" },
+    author: { type: mongoose.Schema.ObjectId, ref: "User" },
     comments: [
       {
         text: String,
         createdAt: { type: Date, default: Date.now },
         // Populate author from user data by using the user ID
-        author: { type: mongoose.Schema.ObjectID, ref: "User" }
+        author: { type: mongoose.Schema.ObjectId, ref: "User" }
       }
     ]
   },
