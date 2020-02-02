@@ -46,6 +46,21 @@ const CreatePin = ({ classes }) => {
           variant="outlined"
         />
       </div>
+      <div>
+        <Button className={classes.button} variant="contained" color="primary">
+          <CancelIcon className={classes.leftIcon} />
+          Discard
+        </Button>
+        <Button
+          type="submit"
+          className={classes.button}
+          variant="contained"
+          color="secondary"
+        >
+          Submit
+          <PublishIcon className={classes.rightIcon} />
+        </Button>
+      </div>
     </form>
   );
 };
