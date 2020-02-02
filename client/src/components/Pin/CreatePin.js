@@ -16,13 +16,8 @@ const CreatePin = ({ classes }) => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [content, setContent] = useState("");
-
   const [cameraType, setCameraType] = useState("");
   const [open, setOpen] = useState(false);
-
-  const handleChange = event => {
-    setCameraType(event.target.value);
-  };
 
   const handleClose = () => {
     setOpen(false);
@@ -54,6 +49,7 @@ const CreatePin = ({ classes }) => {
           id="image"
           type="file"
           className={classes.input}
+          onChange={e => setImage(e.target.files[0])}
         />
         <label htmlFor="image">
           <Button component="span" size="small" className={classes.button}>
@@ -73,7 +69,7 @@ const CreatePin = ({ classes }) => {
             onClose={handleClose}
             onOpen={handleOpen}
             value={cameraType}
-            onChange={handleChange}
+            onChange={e => setCameraType(e.target.value)}
           >
             <MenuItem value={"speed"}>Speed </MenuItem>
             <MenuItem value={"light"}>Red Light</MenuItem>
@@ -90,6 +86,7 @@ const CreatePin = ({ classes }) => {
           margin="normal"
           fullWidth
           variant="outlined"
+          onChange={e => setContent(e.target.value)}
         />
       </div>
       <div>
