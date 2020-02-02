@@ -11,13 +11,12 @@ import Signout from "../Auth/Signout";
 const Header = ({ classes }) => {
   const { state } = useContext(Context);
   const { currentUser } = state;
-  console.log(currentUser.picture);
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <div classMNme={classes.grow}>
+          <div className={classes.grow}>
             <VideocamIcon className={classes.icon} />
             <Typography component="h1" variant="h6" color="inherit" noWrap>
               Go Slow
