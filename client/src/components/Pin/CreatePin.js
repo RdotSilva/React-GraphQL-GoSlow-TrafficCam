@@ -13,6 +13,10 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
 const CreatePin = ({ classes }) => {
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
+  const [content, setContent] = useState("");
+
   const [cameraType, setCameraType] = useState("");
   const [open, setOpen] = useState(false);
 
