@@ -27,6 +27,11 @@ const CreatePin = ({ classes }) => {
     setOpen(true);
   };
 
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log({ title, image, content, cameraType });
+  };
+
   return (
     <form className={classes.form}>
       <Typography
@@ -99,6 +104,8 @@ const CreatePin = ({ classes }) => {
           className={classes.button}
           variant="contained"
           color="secondary"
+          disabled={!title.trim() || !content.trim() || !image || !cameraType}
+          onClick={handleSubmit}
         >
           Submit
           <PublishIcon className={classes.rightIcon} />
