@@ -61,6 +61,7 @@ npm start
 - Apollo Boost
 - MongoDB Atlas
 - Mapbox GL
+- Material UI
 - VSCode
 
 ## Screenshots
