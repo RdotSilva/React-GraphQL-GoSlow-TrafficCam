@@ -9,8 +9,14 @@ import ClearIcon from "@material-ui/icons/Clear";
 import SaveIcon from "@material-ui/icons/SaveTwoTone";
 import PublishIcon from "@material-ui/icons/Publish";
 import CancelIcon from "@material-ui/icons/Cancel";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
 const CreatePin = ({ classes }) => {
+  const [cameraType, setCameraType] = useState("");
+  const [open, setOpen] = useState(false);
   return (
     <form className={classes.form}>
       <Typography
