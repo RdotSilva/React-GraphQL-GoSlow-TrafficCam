@@ -23,7 +23,7 @@ const CreatePin = ({ classes }) => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [content, setContent] = useState("");
-  const [cameraType, setCameraType] = useState("");
+  const [type, setType] = useState("");
   const [open, setOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
@@ -38,8 +38,8 @@ const CreatePin = ({ classes }) => {
   const handleDeleteDraft = () => {
     setTitle("");
     setImage("");
+    setType("");
     setContent("");
-    setCameraType("");
     dispatch({ type: "DELETE_DRAFT" });
   };
 
@@ -75,7 +75,14 @@ const CreatePin = ({ classes }) => {
       // Set up variables to use with create pin mutation
       const url = await handleImageUpload();
       const { latitude, longitude } = state.draft;
-      const variables = { title, image: url, content, latitude, longitude };
+      const variables = {
+        title,
+        image: url,
+        content,
+        type,
+        latitude,
+        longitude
+      };
 
       // Send mutation and destruct createPin data.
       const { createPin } = await client.request(
@@ -134,8 +141,8 @@ const CreatePin = ({ classes }) => {
             open={open}
             onClose={handleClose}
             onOpen={handleOpen}
-            value={cameraType}
-            onChange={e => setCameraType(e.target.value)}
+            value={type}
+            onChange={e => setType(e.target.value)}
           >
             <MenuItem value={"speed"}>Speed </MenuItem>
             <MenuItem value={"light"}>Red Light</MenuItem>
@@ -171,11 +178,7 @@ const CreatePin = ({ classes }) => {
           variant="contained"
           color="secondary"
           disabled={
-            !title.trim() ||
-            !content.trim() ||
-            !image ||
-            !cameraType ||
-            submitting
+            !title.trim() || !content.trim() || !image || !type || submitting
           }
           onClick={handleSubmit}
         >
