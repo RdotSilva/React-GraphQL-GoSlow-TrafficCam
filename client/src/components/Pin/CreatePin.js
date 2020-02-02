@@ -43,7 +43,12 @@ const CreatePin = ({ classes }) => {
         <TrafficTwoToneIcon className={classes.iconLarge} /> Cam Location
       </Typography>
       <div>
-        <TextField name="title" label="Title" placeholder="Insert pin title" />
+        <TextField
+          name="title"
+          label="Title"
+          placeholder="Insert pin title"
+          onChange={e => setTitle(e.target.value)}
+        />
         <input
           accept="image/*"
           id="image"
