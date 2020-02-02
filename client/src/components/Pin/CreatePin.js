@@ -20,6 +20,10 @@ const CreatePin = ({ classes }) => {
     setCameraType(event.target.value);
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <form className={classes.form}>
       <Typography
