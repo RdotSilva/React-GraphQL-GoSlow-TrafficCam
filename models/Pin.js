@@ -5,6 +5,7 @@ const PinSchema = new mongoose.Schema(
     title: String,
     content: String,
     image: String,
+    type: String,
     latitude: Number,
     longitude: Number,
     // Populate author from user data by using the user ID
