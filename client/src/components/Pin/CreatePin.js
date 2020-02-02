@@ -1,15 +1,42 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-// import TextField from "@material-ui/core/TextField";
-// import Typography from "@material-ui/core/Typography";
-// import Button from "@material-ui/core/Button";
-// import AddAPhotoIcon from "@material-ui/icons/AddAPhotoTwoTone";
-// import LandscapeIcon from "@material-ui/icons/LandscapeOutlined";
-// import ClearIcon from "@material-ui/icons/Clear";
-// import SaveIcon from "@material-ui/icons/SaveTwoTone";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import AddAPhotoIcon from "@material-ui/icons/AddAPhotoTwoTone";
+import TrafficTwoToneIcon from "@material-ui/icons/TrafficTwoTone";
+import ClearIcon from "@material-ui/icons/Clear";
+import SaveIcon from "@material-ui/icons/SaveTwoTone";
+import PublishIcon from "@material-ui/icons/Publish";
+import CancelIcon from "@material-ui/icons/Cancel";
 
 const CreatePin = ({ classes }) => {
-  return <div>CreatePin</div>;
+  return (
+    <form className={classes.form}>
+      <Typography
+        className={classes.alignCenter}
+        component="h2"
+        variant="h4"
+        color="secondary"
+      >
+        <TrafficTwoToneIcon className={classes.iconLarge} /> Cam Location
+      </Typography>
+      <div>
+        <TextField name="title" label="Title" placeholder="Insert pin title" />
+        <input
+          accept="image/*"
+          id="image"
+          type="file"
+          className={classes.input}
+        />
+        <label htmlFor="image">
+          <Button component="span" size="small" className={classes.button}>
+            <AddAPhotoIcon />
+          </Button>
+        </label>
+      </div>
+    </form>
+  );
 };
 
 const styles = theme => ({
@@ -34,7 +61,8 @@ const styles = theme => ({
   },
   iconLarge: {
     fontSize: 40,
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing.unit,
+    color: "red"
   },
   leftIcon: {
     fontSize: 20,
