@@ -35,6 +35,26 @@ const CreatePin = ({ classes }) => {
           </Button>
         </label>
       </div>
+      <div>
+        <FormControl className={classes.formControl}>
+          <InputLabel id="demo-controlled-open-select-label">
+            Camera Type
+          </InputLabel>
+          <Select
+            labelId="demo-controlled-open-select-label"
+            id="demo-controlled-open-select"
+            open={open}
+            onClose={handleClose}
+            onOpen={handleOpen}
+            value={cameraType}
+            onChange={handleChange}
+          >
+            <MenuItem value={"speed"}>Speed </MenuItem>
+            <MenuItem value={"light"}>Red Light</MenuItem>
+            <MenuItem value={"other"}>Other</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
       <div className={classes.contentField}>
         <TextField
           name="content"
