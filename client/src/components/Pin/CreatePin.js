@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhotoTwoTone";
 import TrafficTwoToneIcon from "@material-ui/icons/TrafficTwoTone";
-import ClearIcon from "@material-ui/icons/Clear";
-import SaveIcon from "@material-ui/icons/SaveTwoTone";
 import PublishIcon from "@material-ui/icons/Publish";
 import CancelIcon from "@material-ui/icons/Cancel";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -17,6 +15,11 @@ import Select from "@material-ui/core/Select";
 const CreatePin = ({ classes }) => {
   const [cameraType, setCameraType] = useState("");
   const [open, setOpen] = useState(false);
+
+  const handleChange = event => {
+    setCameraType(event.target.value);
+  };
+
   return (
     <form className={classes.form}>
       <Typography
@@ -129,6 +132,10 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit * 2,
     marginRight: theme.spacing.unit,
     marginLeft: 0
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120
   }
 });
 
