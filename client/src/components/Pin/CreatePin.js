@@ -11,6 +11,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import axios from "axios";
 
 import Context from "../../context/context";
 
@@ -39,9 +40,23 @@ const CreatePin = ({ classes }) => {
     dispatch({ type: "DELETE_DRAFT" });
   };
 
-  const handleSubmit = event => {
+  // Creates an image data form and uploads it to Cloudinary.
+  // Returns the image url.
+  const handleImageUpload = async () => {
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "goslow");
+    data.append("cloud_name", "rdotsilva");
+    const res = await axios.post(
+      "https://api.cloudinary.com/v1_1/rdotsilva/image/upload",
+      data
+    );
+    return res.data.url;
+  };
+
+  const handleSubmit = async event => {
     event.preventDefault();
-    console.log({ title, image, content, cameraType });
+    const url = await handleImageUpload();
   };
 
   return (
