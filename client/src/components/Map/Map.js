@@ -7,6 +7,8 @@ import Blog from "../Blog/Blog";
 // import Typography from "@material-ui/core/Typography";
 // import DeleteIcon from "@material-ui/icons/DeleteTwoTone";
 import Context from "../../context/context";
+import { useClient } from "../../hooks/useClient";
+import { GET_PINS_QUERY } from "../../graphql/queries";
 
 const INITIAL_VIEWPORT = {
   latitude: 37.7577,
@@ -15,13 +17,24 @@ const INITIAL_VIEWPORT = {
 };
 
 const Map = ({ classes }) => {
+  const client = useClient();
   const { state, dispatch } = useContext(Context);
-  const [viewport, setViewport] = useState(INITIAL_VIEWPORT);
-  const [userPosition, setUserPosition] = useState(null);
 
+  useEffect(() => {
+    getPins();
+  }, []);
+
+  const [viewport, setViewport] = useState(INITIAL_VIEWPORT);
+
+  const [userPosition, setUserPosition] = useState(null);
   useEffect(() => {
     getUserPosition();
   }, []);
+
+  const getPins = async () => {
+    const { getPins } = await client.request(GET_PINS_QUERY);
+    dispatch({ type: "GET_PINS", payload: getPins });
+  };
 
   const getUserPosition = () => {
     if ("geolocation" in navigator) {
@@ -61,11 +74,13 @@ const Map = ({ classes }) => {
         onClick={handleMapClick}
         {...viewport}
       >
+        {/* Navigation Control */}
         <div className={classes.navigationControl}>
           <NavigationControl
             nViewportChange={newViewport => setViewport(newViewport)}
           />
         </div>
+        {/* Pin for User's Current Position */}
         {userPosition && (
           <Marker
             latitude={userPosition.latitude}
@@ -76,6 +91,7 @@ const Map = ({ classes }) => {
             <PinIcon size={40} color="red" label="Your Location"></PinIcon>
           </Marker>
         )}
+        {/* Draft Pin */}
         {state.draft && (
           <Marker
             latitude={state.draft.latitude}
@@ -86,6 +102,18 @@ const Map = ({ classes }) => {
             <PinIcon size={40} color="hotpink" label="Draft Pin"></PinIcon>
           </Marker>
         )}
+        {/* Created Pins */}
+        {state.pins.map(pin => (
+          <Marker
+            key={pin._id}
+            latitude={pin.latitude}
+            longitude={pin.longitude}
+            offsetLeft={-19}
+            offsetTop={-37}
+          >
+            <PinIcon size={40} color="darkblue" label={pin.type} />
+          </Marker>
+        ))}
       </ReactMapGL>
       <Blog />
     </div>
