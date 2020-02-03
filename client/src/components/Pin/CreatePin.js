@@ -83,6 +83,7 @@ const CreatePin = ({ classes }) => {
       );
 
       console.log("Pin Created", { createPin });
+      dispatch({ type: "CREATE_PIN", payload: createPin });
 
       // Clear draft pin when finished creating a new pin.
       handleDeleteDraft();
