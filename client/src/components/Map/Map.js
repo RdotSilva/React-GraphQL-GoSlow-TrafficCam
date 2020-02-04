@@ -76,6 +76,11 @@ const Map = ({ classes }) => {
     return isNewPin ? "limegreen" : "darkblue";
   };
 
+  const handleSelectPin = pin => {
+    setPopup(pin);
+    dispatch({ type: "SET_PIN", payload: pin });
+  };
+
   return (
     <div className={classes.root}>
       <ReactMapGL
