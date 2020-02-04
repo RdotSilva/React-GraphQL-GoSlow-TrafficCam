@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import AccessTime from "@material-ui/icons/AccessTime";
-import Face from "@material-ui/icons/Face";
-
+import ScheduleTwoToneIcon from "@material-ui/icons/ScheduleTwoTone";
+import PersonOutlineTwoToneIcon from "@material-ui/icons/PersonOutlineTwoTone";
 import Context from "../../context/context";
+import SpeedTwoToneIcon from "@material-ui/icons/SpeedTwoTone";
+import TrafficTwoToneIcon from "@material-ui/icons/TrafficTwoTone";
+import NotListedLocationTwoToneIcon from "@material-ui/icons/NotListedLocationTwoTone";
 
 const PinContent = ({ classes }) => {
   const { state } = useContext(Context);
@@ -18,6 +20,7 @@ const PinContent = ({ classes }) => {
     comments
   } = state.currentPin;
 
+  // Check what type of camera and return the correct Icon.
   const checkCameraType = cameraType => {
     switch (cameraType) {
       case "speed":
@@ -33,6 +36,38 @@ const PinContent = ({ classes }) => {
         break;
     }
   };
+
+  return (
+    <div className={classes.root}>
+      <Typography component="h2" variant="h4" color="primary" gutterBottom>
+        {title}
+      </Typography>
+      <Typography>
+        <PersonOutlineTwoToneIcon className={classes.icon} />
+        {author.name}
+      </Typography>
+      <Typography
+        className={classes.text}
+        variant="subtitle2"
+        color="inherit"
+        gutterBottom
+      >
+        {checkCameraType(type)}
+      </Typography>
+      <Typography
+        className={classes.text}
+        variant="subtitle2"
+        color="inherit"
+        gutterBottom
+      >
+        <ScheduleTwoToneIcon className={classes.icon} />
+        {createdAt}
+      </Typography>
+      <Typography variant="subtitle1" gutterBottom>
+        {content}
+      </Typography>
+    </div>
+  );
 };
 
 const styles = theme => ({
