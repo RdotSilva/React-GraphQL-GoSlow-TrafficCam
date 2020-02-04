@@ -5,7 +5,7 @@ import PinIcon from "./PinIcon";
 import Blog from "../Blog/Blog";
 import differenceInMinutes from "date-fns/differenceInMinutes";
 // import Button from "@material-ui/core/Button";
-// import Typography from "@material-ui/core/Typography";
+import Typography from "@material-ui/core/Typography";
 // import DeleteIcon from "@material-ui/icons/DeleteTwoTone";
 import Context from "../../context/context";
 import { useClient } from "../../hooks/useClient";
@@ -137,6 +137,27 @@ const Map = ({ classes }) => {
             />
           </Marker>
         ))}
+        {/* Popup Dialog for Created Pins */}
+        {popup && (
+          <Popup
+            anchor="top"
+            latitude={popup.latitude}
+            longitude={popup.longitude}
+            closeOnClick={false}
+            onClose={() => setPopup(null)}
+          >
+            <img
+              className={classes.popupImages}
+              src={popup.image}
+              alt={popup.title}
+            />
+            <div className={classes.popupTab}>
+              <Typography>
+                {popup.latitude.toFixed(6)}, {popup.longitude.toFixed(6)}
+              </Typography>
+            </div>
+          </Popup>
+        )}
       </ReactMapGL>
       <Blog />
     </div>
