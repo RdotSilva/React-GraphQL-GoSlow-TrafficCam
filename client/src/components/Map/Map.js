@@ -10,6 +10,7 @@ import DeleteForeverTwoToneIcon from "@material-ui/icons/DeleteForeverTwoTone";
 import Context from "../../context/context";
 import { useClient } from "../../hooks/useClient";
 import { GET_PINS_QUERY } from "../../graphql/queries";
+import { DELETE_PIN_MUTATION } from "../../graphql/mutations";
 
 const INITIAL_VIEWPORT = {
   latitude: 37.7577,
@@ -158,7 +159,7 @@ const Map = ({ classes }) => {
                 {popup.latitude.toFixed(6)}, {popup.longitude.toFixed(6)}
               </Typography>
               {isAuthUser() && (
-                <Button>
+                <Button onClick={() => handleDeletePin(popup)}>
                   <DeleteForeverTwoToneIcon className={classes.deleteIcon} />
                 </Button>
               )}
