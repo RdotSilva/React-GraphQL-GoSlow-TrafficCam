@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import ReactMapGL, { NavigationControl, Marker } from "react-map-gl";
+import ReactMapGL, { NavigationControl, Marker, Popup } from "react-map-gl";
 import { withStyles } from "@material-ui/core/styles";
 import PinIcon from "./PinIcon";
 import Blog from "../Blog/Blog";
@@ -31,6 +31,8 @@ const Map = ({ classes }) => {
   useEffect(() => {
     getUserPosition();
   }, []);
+
+  const [popup, setPopup] = useState(null);
 
   const getPins = async () => {
     const { getPins } = await client.request(GET_PINS_QUERY);
