@@ -1,10 +1,23 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-// import Typography from "@material-ui/core/Typography";
-// import AccessTime from "@material-ui/icons/AccessTime";
-// import Face from "@material-ui/icons/Face";
+import Typography from "@material-ui/core/Typography";
+import AccessTime from "@material-ui/icons/AccessTime";
+import Face from "@material-ui/icons/Face";
+
+import Context from "../../context/context";
 
 const PinContent = ({ classes }) => {
+  const { state } = useContext(Context);
+
+  const {
+    title,
+    content,
+    type,
+    author,
+    createdAt,
+    comments
+  } = state.currentPin;
+
   return <div>PinContent</div>;
 };
 
