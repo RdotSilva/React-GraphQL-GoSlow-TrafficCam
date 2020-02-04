@@ -4,9 +4,9 @@ import { withStyles } from "@material-ui/core/styles";
 import PinIcon from "./PinIcon";
 import Blog from "../Blog/Blog";
 import differenceInMinutes from "date-fns/differenceInMinutes";
-// import Button from "@material-ui/core/Button";
+import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-// import DeleteIcon from "@material-ui/icons/DeleteTwoTone";
+import DeleteForeverTwoToneIcon from "@material-ui/icons/DeleteForeverTwoTone";
 import Context from "../../context/context";
 import { useClient } from "../../hooks/useClient";
 import { GET_PINS_QUERY } from "../../graphql/queries";
@@ -80,6 +80,8 @@ const Map = ({ classes }) => {
     setPopup(pin);
     dispatch({ type: "SET_PIN", payload: pin });
   };
+
+  const isAuthUser = () => state.currentUser._id === popup.author._id;
 
   return (
     <div className={classes.root}>
@@ -155,6 +157,11 @@ const Map = ({ classes }) => {
               <Typography>
                 {popup.latitude.toFixed(6)}, {popup.longitude.toFixed(6)}
               </Typography>
+              {isAuthUser() && (
+                <Button>
+                  <DeleteForeverTwoToneIcon className={classes.deleteIcon} />
+                </Button>
+              )}
             </div>
           </Popup>
         )}
@@ -179,7 +186,9 @@ const styles = {
     margin: "1em"
   },
   deleteIcon: {
-    color: "red"
+    color: "red",
+    height: 40,
+    width: 40
   },
   popupImage: {
     padding: "0.4em",
