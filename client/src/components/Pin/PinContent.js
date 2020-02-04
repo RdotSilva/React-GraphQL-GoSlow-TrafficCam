@@ -7,6 +7,7 @@ import Context from "../../context/context";
 import SpeedTwoToneIcon from "@material-ui/icons/SpeedTwoTone";
 import TrafficTwoToneIcon from "@material-ui/icons/TrafficTwoTone";
 import NotListedLocationTwoToneIcon from "@material-ui/icons/NotListedLocationTwoTone";
+import format from "date-fns/format";
 
 const PinContent = ({ classes }) => {
   const { state } = useContext(Context);
@@ -61,7 +62,7 @@ const PinContent = ({ classes }) => {
         gutterBottom
       >
         <ScheduleTwoToneIcon className={classes.icon} />
-        {createdAt}
+        {format(Number(createdAt), "MM dd, yyyy H mm a")}
       </Typography>
       <Typography variant="subtitle1" gutterBottom>
         {content}
