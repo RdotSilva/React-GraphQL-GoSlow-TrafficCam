@@ -25,3 +25,11 @@ mutation($title: String!, $image: String!, $type: String!, $content: String!, $l
   }
 }
 `;
+
+export const DELETE_PIN_MUTATION = `
+mutation($pinId: ID!) {
+  deletePin(pinId: $pinID) {
+    _id
+  }
+}
+`;
