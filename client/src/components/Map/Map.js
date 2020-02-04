@@ -124,7 +124,12 @@ const Map = ({ classes }) => {
             offsetLeft={-19}
             offsetTop={-37}
           >
-            <PinIcon size={40} color={highlightNewPin(pin)} label={pin.type} />
+            <PinIcon
+              onClick={() => handleSelectPin(pin)}
+              size={40}
+              color={highlightNewPin(pin)}
+              label={pin.type}
+            />
           </Marker>
         ))}
       </ReactMapGL>
