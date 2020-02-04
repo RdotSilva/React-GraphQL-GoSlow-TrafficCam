@@ -3,6 +3,7 @@ import ReactMapGL, { NavigationControl, Marker } from "react-map-gl";
 import { withStyles } from "@material-ui/core/styles";
 import PinIcon from "./PinIcon";
 import Blog from "../Blog/Blog";
+import differenceInMinutes from "date-fns/differenceInMinutes";
 // import Button from "@material-ui/core/Button";
 // import Typography from "@material-ui/core/Typography";
 // import DeleteIcon from "@material-ui/icons/DeleteTwoTone";
@@ -63,6 +64,16 @@ const Map = ({ classes }) => {
     });
   };
 
+  // Check if a pin has been added recently added and highlight in different color for recently added pins.
+  const highlightNewPin = pin => {
+    const minutesSincePinAdded = 30;
+    const isNewPin =
+      differenceInMinutes(Date.now(), Number(pin.createdAt)) <=
+      minutesSincePinAdded;
+
+    return isNewPin ? "limegreen" : "darkblue";
+  };
+
   return (
     <div className={classes.root}>
       <ReactMapGL
@@ -111,7 +122,7 @@ const Map = ({ classes }) => {
             offsetLeft={-19}
             offsetTop={-37}
           >
-            <PinIcon size={40} color="darkblue" label={pin.type} />
+            <PinIcon size={40} color={highlightNewPin(pin)} label={pin.type} />
           </Marker>
         ))}
       </ReactMapGL>
