@@ -18,7 +18,21 @@ const PinContent = ({ classes }) => {
     comments
   } = state.currentPin;
 
-  return <div>PinContent</div>;
+  const checkCameraType = cameraType => {
+    switch (cameraType) {
+      case "speed":
+        return <SpeedTwoToneIcon />;
+        break;
+      case "light":
+        return <TrafficTwoToneIcon />;
+        break;
+      case "other":
+        return <NotListedLocationTwoToneIcon />;
+        break;
+      default:
+        break;
+    }
+  };
 };
 
 const styles = theme => ({
