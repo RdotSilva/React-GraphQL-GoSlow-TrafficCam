@@ -52,9 +52,9 @@ const Map = ({ classes }) => {
 
   // Handle a left click event on the map. Add a draft pin when user clicks map.
   const handleMapClick = event => {
-    const { lngLat, leftButton } = event;
+    const { lngLat, leftButton, target } = event;
 
-    if (!leftButton) return;
+    if (!leftButton || target.childNodes.length < 1) return;
     if (!state.draft) {
       dispatch({ type: "CREATE_DRAFT" });
     }
