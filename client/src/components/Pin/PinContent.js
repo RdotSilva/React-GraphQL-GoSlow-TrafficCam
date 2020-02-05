@@ -8,6 +8,8 @@ import SpeedTwoToneIcon from "@material-ui/icons/SpeedTwoTone";
 import TrafficTwoToneIcon from "@material-ui/icons/TrafficTwoTone";
 import NotListedLocationTwoToneIcon from "@material-ui/icons/NotListedLocationTwoTone";
 import format from "date-fns/format";
+import CreateComment from "../Comments/CreateComment";
+import Comments from "../Comments/Comments";
 
 const PinContent = ({ classes }) => {
   const { state } = useContext(Context);
@@ -67,6 +69,9 @@ const PinContent = ({ classes }) => {
       <Typography variant="subtitle1" gutterBottom>
         {content}
       </Typography>
+      {/* Popup Dialog for Created Pins */}
+      <CreateComment />
+      <Comments comments={comments} />
     </div>
   );
 };
