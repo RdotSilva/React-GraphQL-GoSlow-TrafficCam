@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { withStyles } from "@material-ui/core";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
@@ -11,19 +11,22 @@ import { useClient } from "../../hooks/useClient";
 
 const CreateComment = ({ classes }) => {
   const client = useClient();
+  const [comment, setComment] = useState("");
 
   return (
     <>
       <form className={classes.form}>
-        <IconButton className={classes.clearButton}>
+        <IconButton disabled={!comment.trim()} className={classes.clearButton}>
           <ClearIcon />
         </IconButton>
         <InputBase
           className={classes.input}
           placeholder="Add Comment"
           multiline={true}
+          value={comment}
+          onChange={e => setComment(e.target.value)}
         />
-        <IconButton className={classes.sendButton}>
+        <IconButton disabled={!comment.trim()} className={classes.sendButton}>
           <SendIcon />
         </IconButton>
       </form>
