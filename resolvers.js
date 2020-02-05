@@ -36,7 +36,7 @@ module.exports = {
       const newComment = { text: args.text, author: ctx.currentUser._id };
       const pinUpdated = await Pin.findOneAndUpdate(
         { _id: args.pinId },
-        { $push: { comments: newCOmment } },
+        { $push: { comments: newComment } },
         { new: true }
       )
         .populate("author")
