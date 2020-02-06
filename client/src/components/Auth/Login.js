@@ -12,6 +12,11 @@ import { BASE_URL } from "./../../hooks/useClient";
 const Login = ({ classes }) => {
   const { dispatch } = useContext(Context);
 
+  const onFailure = err => {
+    console.error("Error logging in", err);
+    dispatch({ type: "IS_LOGGED_IN", payload: false });
+  };
+
   const onSuccess = async googleUser => {
     try {
       const idToken = googleUser.getAuthResponse().id_token;
@@ -52,11 +57,6 @@ const Login = ({ classes }) => {
       />
     </div>
   );
-};
-
-const onFailure = err => {
-  console.error("Error logging in", err);
-  dispatch({ type: "IS_LOGGED_IN", payload: false });
 };
 
 const styles = {
