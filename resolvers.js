@@ -1,5 +1,9 @@
-const { AuthenticationError } = require("apollo-server");
+const { AuthenticationError, PubSub } = require("apollo-server");
 const Pin = require("./models/Pin");
+
+// Used for subscriptions
+const pubsub = new PubSub();
+const PIN_ADDED = "PIN_ADDED";
 
 // HOC to check if currentUser is inside of context.
 const authenticated = next => (root, args, ctx, info) => {
@@ -26,6 +30,7 @@ module.exports = {
         author: ctx.currentUser._id
       }).save();
       const pinAdded = await Pin.populate(newPin, "author");
+      pubsub.publish(PIN_ADDED, { pinAdded });
       return pinAdded;
     }),
     deletePin: authenticated(async (root, args, ctx) => {
@@ -43,5 +48,10 @@ module.exports = {
         .populate("comments.author");
       return pinUpdated;
     })
+  },
+  Subscription: {
+    pinAdded: {
+      subscribe: () => pubsub.asyncIterator(PIN_ADDED)
+    }
   }
 };
