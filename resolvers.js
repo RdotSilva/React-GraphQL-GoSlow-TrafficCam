@@ -4,6 +4,7 @@ const Pin = require("./models/Pin");
 // Used for subscriptions
 const pubsub = new PubSub();
 const PIN_ADDED = "PIN_ADDED";
+const PIN_DELETED = "PIN_DELETED";
 
 // HOC to check if currentUser is inside of context.
 const authenticated = next => (root, args, ctx, info) => {
@@ -35,6 +36,7 @@ module.exports = {
     }),
     deletePin: authenticated(async (root, args, ctx) => {
       const pinDeleted = await Pin.findOneAndDelete({ _id: args.pinId }).exec();
+      pubsub.publish(PIN_DELETED, { pinDeleted });
       return pinDeleted;
     }),
     createComment: authenticated(async (root, args, ctx) => {
@@ -52,6 +54,9 @@ module.exports = {
   Subscription: {
     pinAdded: {
       subscribe: () => pubsub.asyncIterator(PIN_ADDED)
+    },
+    pinDeleted: {
+      subscribe: () => pubsub.asyncIterator(PIN_DELETED)
     }
   }
 };
