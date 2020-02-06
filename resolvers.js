@@ -5,6 +5,7 @@ const Pin = require("./models/Pin");
 const pubsub = new PubSub();
 const PIN_ADDED = "PIN_ADDED";
 const PIN_DELETED = "PIN_DELETED";
+const PIN_UPDATED = "PIN_UPDATED";
 
 // HOC to check if currentUser is inside of context.
 const authenticated = next => (root, args, ctx, info) => {
@@ -48,6 +49,7 @@ module.exports = {
       )
         .populate("author")
         .populate("comments.author");
+      pubsub.publish(PIN_UPDATED, { pinUpdated });
       return pinUpdated;
     })
   },
@@ -57,6 +59,9 @@ module.exports = {
     },
     pinDeleted: {
       subscribe: () => pubsub.asyncIterator(PIN_DELETED)
+    },
+    pinUpdated: {
+      subscribe: () => pubsub.asyncIterator(PIN_UPDATED)
     }
   }
 };
