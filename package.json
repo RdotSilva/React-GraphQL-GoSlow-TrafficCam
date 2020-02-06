@@ -12,12 +12,20 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "apollo-cache-inmemory": "^1.6.5",
+    "apollo-client": "^2.6.8",
+    "apollo-link": "^1.2.13",
+    "apollo-link-error": "^1.1.12",
+    "apollo-link-http": "^1.5.16",
+    "apollo-link-ws": "^1.0.19",
     "apollo-server": "^2.9.16",
     "concurrently": "^5.1.0",
     "dotenv": "^8.2.0",
     "google-auth-library": "^5.9.2",
     "graphql": "^14.6.0",
-    "mongoose": "^5.8.10"
+    "graphql-tag": "^2.10.3",
+    "mongoose": "^5.8.10",
+    "subscriptions-transport-ws": "^0.9.16"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
