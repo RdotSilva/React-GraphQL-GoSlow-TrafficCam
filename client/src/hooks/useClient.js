@@ -1,6 +1,6 @@
 // Custom hook that will create a new GraphQL client instance to use inside of any
 // other component to send GraphQL requests.
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { GraphQLClient } from "graphql-request";
 
 // Uses local host in development. Change the production-url when deploying.
