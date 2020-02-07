@@ -100,6 +100,15 @@ const Map = ({ classes }) => {
     setPopup(null);
   };
 
+  // GraphQL subscriptions
+  useSubscription(PIN_ADDED_SUBSCRIPTION, {
+    onSubscriptionData: ({ subscriptionData }) => {
+      const { pinAdded } = subscriptionData.data;
+      console.log({ pinAdded });
+      dispatch({ type: "CREATE_PIN", payload: pinAdded });
+    }
+  });
+
   return (
     <div className={classes.root}>
       <ReactMapGL
@@ -184,14 +193,6 @@ const Map = ({ classes }) => {
         )}
       </ReactMapGL>
       {/* Subscriptions for Creating / Updating / Deleting pins. */}
-      {/* <Subscription
-        subscription={PIN_ADDED_SUBSCRIPTION}
-        onSubscriptionData={({ subscriptionData }) => {
-          const { pinAdded } = subscriptionData.data;
-          console.log({ pinAdded });
-          dispatch({ type: "CREATE_PIN", payload: pinAdded });
-        }}
-      /> */}
       {/* <Subscription
         subscription={PIN_UPDATED_SUBSCRIPTION}
         onSubscriptionData={({ subscriptionData }) => {
