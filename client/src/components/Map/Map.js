@@ -11,6 +11,12 @@ import Context from "../../context/context";
 import { useClient } from "../../hooks/useClient";
 import { GET_PINS_QUERY } from "../../graphql/queries";
 import { DELETE_PIN_MUTATION } from "../../graphql/mutations";
+import { useSubscription } from "@apollo/react-hooks";
+import {
+  PIN_ADDED_SUBSCRIPTION,
+  PIN_DELETED_SUBSCRIPTION,
+  PIN_UPDATED_SUBSCRIPTION
+} from "./../../graphql/subscriptions";
 
 const INITIAL_VIEWPORT = {
   latitude: 37.7577,
