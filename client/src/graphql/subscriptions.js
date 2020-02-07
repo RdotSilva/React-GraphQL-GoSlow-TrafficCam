@@ -17,6 +17,14 @@ export const PIN_ADDED_SUBSCRIPTION = gql`
         email
         picture
       }
+      comments {
+        text
+        createdAt
+        author {
+          name
+          picture
+        }
+      }
     }
   }
 `;
@@ -44,6 +52,14 @@ export const PIN_UPDATED_SUBSCRIPTION = gql`
           picture
         }
       }
+    }
+  }
+`;
+
+export const PIN_DELETED_SUBSCRIPTION = gql`
+  subscription {
+    pinDeleted {
+      _id
     }
   }
 `;
