@@ -117,6 +117,14 @@ const Map = ({ classes }) => {
     }
   });
 
+  useSubscription(PIN_UPDATED_SUBSCRIPTION, {
+    onSubscriptionData: ({ subscriptionData }) => {
+      const { pinUpdated } = subscriptionData.data;
+      console.log({ pinUpdated });
+      dispatch({ type: "CREATE_COMMENT", payload: pinUpdated });
+    }
+  });
+
   return (
     <div className={classes.root}>
       <ReactMapGL
@@ -200,15 +208,6 @@ const Map = ({ classes }) => {
           </Popup>
         )}
       </ReactMapGL>
-      {/* Subscriptions for Creating / Updating / Deleting pins. */}
-      {/* <Subscription
-        subscription={PIN_UPDATED_SUBSCRIPTION}
-        onSubscriptionData={({ subscriptionData }) => {
-          const { pinUpdated } = subscriptionData.data;
-          console.log({ pinUpdated });
-          dispatch({ type: "CREATE_COMMENT", payload: pinUpdated });
-        }}
-      /> */}
       <Blog />
     </div>
   );
