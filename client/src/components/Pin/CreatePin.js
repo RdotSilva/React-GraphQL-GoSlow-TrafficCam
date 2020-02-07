@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhotoTwoTone";
@@ -18,6 +19,7 @@ import { CREATE_PIN_MUTATION } from "./../../graphql/mutations";
 import { useClient } from "../../hooks/useClient";
 
 const CreatePin = ({ classes }) => {
+  const mobileSize = useMediaQuery("(max-width: 650px)");
   const client = useClient();
 
   const { state, dispatch } = useContext(Context);
