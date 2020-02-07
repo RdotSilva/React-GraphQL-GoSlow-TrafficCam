@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import ReactMapGL, { NavigationControl, Marker, Popup } from "react-map-gl";
 import { withStyles } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import PinIcon from "./PinIcon";
 import Blog from "../Blog/Blog";
 import differenceInMinutes from "date-fns/differenceInMinutes";
@@ -26,6 +27,10 @@ const INITIAL_VIEWPORT = {
 
 const Map = ({ classes }) => {
   const client = useClient();
+
+  // Check if device is mobile with a width less than 650px
+  const mobileSize = useMediaQuery("(max-width: 650px)");
+
   const { state, dispatch } = useContext(Context);
 
   useEffect(() => {
