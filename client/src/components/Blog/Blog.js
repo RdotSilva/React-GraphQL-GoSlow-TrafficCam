@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { withStyles } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { Paper } from "@material-ui/core";
 import Context from "./../../context/context";
 import NoContent from "../Pin/NoContent";
@@ -8,6 +9,9 @@ import PinContent from "../Pin/PinContent";
 
 const Blog = ({ classes }) => {
   const { state } = useContext(Context);
+
+  // Used to determine if device is mobile
+  const mobileSize = useMediaQuery("(max-width: 650px)");
 
   const { draft, currentPin } = state;
 
