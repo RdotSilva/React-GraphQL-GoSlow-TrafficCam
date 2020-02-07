@@ -58,7 +58,7 @@ npm start
 - NodeJS
 - GraphQL
 - Apollo Server
-- Apollo Boost
+- Apollo Client (hooks)
 - MongoDB Atlas
 - Mapbox GL
 - Material UI
