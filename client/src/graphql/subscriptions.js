@@ -20,3 +20,30 @@ export const PIN_ADDED_SUBSCRIPTION = gql`
     }
   }
 `;
+
+export const PIN_UPDATED_SUBSCRIPTION = gql`
+  subscription {
+    pinUpdated {
+      _id
+      createdAt
+      title
+      content
+      type
+      image
+      latitude
+      longitude
+      author {
+        _id
+        name
+      }
+      comments {
+        text
+        createdAt
+        author {
+          name
+          picture
+        }
+      }
+    }
+  }
+`;
