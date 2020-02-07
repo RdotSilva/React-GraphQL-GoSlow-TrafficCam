@@ -77,15 +77,6 @@ const CreatePin = ({ classes }) => {
       };
 
       await client.request(CREATE_PIN_MUTATION, variables);
-      // TODO: remove code above and uncomment code if it breaks.
-      // Send mutation and destruct createPin data.
-      // const { createPin } = await client.request(
-      //   CREATE_PIN_MUTATION,
-      //   variables
-      // );
-
-      // console.log("Pin Created", { createPin });
-      // dispatch({ type: "CREATE_PIN", payload: createPin });
 
       // Clear draft pin when finished creating a new pin.
       handleDeleteDraft();
