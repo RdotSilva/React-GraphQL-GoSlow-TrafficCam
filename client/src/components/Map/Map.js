@@ -143,7 +143,7 @@ const Map = ({ classes }) => {
         {/* Navigation Control */}
         <div className={classes.navigationControl}>
           <NavigationControl
-            nViewportChange={newViewport => setViewport(newViewport)}
+            onViewportChange={newViewport => setViewport(newViewport)}
           />
         </div>
         {/* Pin for User's Current Position */}
