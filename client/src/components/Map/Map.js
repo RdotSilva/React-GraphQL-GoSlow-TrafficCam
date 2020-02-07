@@ -200,6 +200,14 @@ const Map = ({ classes }) => {
           dispatch({ type: "CREATE_COMMENT", payload: pinUpdated });
         }}
       /> */}
+      {/* <Subscription
+        subscription={PIN_DELETED_SUBSCRIPTION}
+        onSubscriptionData={({ subscriptionData }) => {
+          const { pinDeleted } = subscriptionData.data;
+          console.log({ pinDeleted });
+          dispatch({ type: "DELETE_PIN", payload: pinDeleted });
+        }}
+      /> */}
       <Blog />
     </div>
   );
