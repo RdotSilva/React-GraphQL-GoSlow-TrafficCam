@@ -39,7 +39,12 @@ const Header = ({ classes }) => {
                 src={currentUser.picture}
                 alt={currentUser.name}
               />
-              <Typography variant="h5" color="inherit" noWrap>
+              <Typography
+                className={mobileSize ? classes.mobile : ""}
+                variant="h5"
+                color="inherit"
+                noWrap
+              >
                 {currentUser.name}
               </Typography>
             </div>
