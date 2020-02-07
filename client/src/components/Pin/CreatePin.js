@@ -143,7 +143,7 @@ const CreatePin = ({ classes }) => {
           name="content"
           label="Content"
           multiline
-          rows="6"
+          rows={mobileSize ? "3" : "6"}
           margin="normal"
           fullWidth
           variant="outlined"
