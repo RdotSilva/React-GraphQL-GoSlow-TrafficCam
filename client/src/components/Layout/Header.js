@@ -4,6 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import VideocamIcon from "@material-ui/icons/Videocam";
 import Typography from "@material-ui/core/Typography";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import Context from "../../context/context";
 import Signout from "../Auth/Signout";
@@ -12,13 +13,22 @@ const Header = ({ classes }) => {
   const { state } = useContext(Context);
   const { currentUser } = state;
 
+  const mobileSize = useMediaQuery("(max-width: 650px)");
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
+          {/* Title / Logo */}
           <div className={classes.grow}>
             <VideocamIcon className={classes.icon} />
-            <Typography component="h1" variant="h6" color="inherit" noWrap>
+            <Typography
+              className={mobileSize ? classes.mobile : ""}
+              component="h1"
+              variant="h6"
+              color="inherit"
+              noWrap
+            >
               Go Slow
             </Typography>
           </div>
