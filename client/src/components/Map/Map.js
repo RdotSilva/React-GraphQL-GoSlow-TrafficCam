@@ -135,6 +135,7 @@ const Map = ({ classes }) => {
         height="calc(100vh - 64px)"
         mapStyle="mapbox://styles/mapbox/streets-v9"
         mapboxApiAccessToken="pk.eyJ1IjoicmRvdHNpbHZhIiwiYSI6ImNrNjJwNHl3NjBndGEzZXIwNDVrM3hhOXAifQ.xyMmyqimZBA6XtUG7oUUjQ"
+        scrollZoom={!mobileSize}
         onViewportChange={newViewport => setViewport(newViewport)}
         onClick={handleMapClick}
         {...viewport}
