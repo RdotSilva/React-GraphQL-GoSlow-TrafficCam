@@ -26,7 +26,7 @@ const Blog = ({ classes }) => {
   }
 
   return (
-    <Paper className={classes.root}>
+    <Paper className={mobileSize ? classes.rootMobile : classes.root}>
       <BlogContent />
     </Paper>
   );
