@@ -109,6 +109,14 @@ const Map = ({ classes }) => {
     }
   });
 
+  useSubscription(PIN_DELETED_SUBSCRIPTION, {
+    onSubscriptionData: ({ subscriptionData }) => {
+      const { pinDeleted } = subscriptionData.data;
+      console.log({ pinDeleted });
+      dispatch({ type: "DELETE_PIN", payload: pinDeleted });
+    }
+  });
+
   return (
     <div className={classes.root}>
       <ReactMapGL
@@ -199,14 +207,6 @@ const Map = ({ classes }) => {
           const { pinUpdated } = subscriptionData.data;
           console.log({ pinUpdated });
           dispatch({ type: "CREATE_COMMENT", payload: pinUpdated });
-        }}
-      /> */}
-      {/* <Subscription
-        subscription={PIN_DELETED_SUBSCRIPTION}
-        onSubscriptionData={({ subscriptionData }) => {
-          const { pinDeleted } = subscriptionData.data;
-          console.log({ pinDeleted });
-          dispatch({ type: "DELETE_PIN", payload: pinDeleted });
         }}
       /> */}
       <Blog />
