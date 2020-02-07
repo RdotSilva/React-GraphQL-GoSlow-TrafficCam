@@ -192,6 +192,14 @@ const Map = ({ classes }) => {
           dispatch({ type: "CREATE_PIN", payload: pinAdded });
         }}
       /> */}
+      {/* <Subscription
+        subscription={PIN_UPDATED_SUBSCRIPTION}
+        onSubscriptionData={({ subscriptionData }) => {
+          const { pinUpdated } = subscriptionData.data;
+          console.log({ pinUpdated });
+          dispatch({ type: "CREATE_COMMENT", payload: pinUpdated });
+        }}
+      /> */}
       <Blog />
     </div>
   );
