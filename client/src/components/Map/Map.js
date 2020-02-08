@@ -95,7 +95,23 @@ const Map = ({ classes }) => {
       differenceInMinutes(Date.now(), Number(pin.createdAt)) <=
       minutesSincePinAdded;
 
-    return isNewPin ? "limegreen" : "darkblue";
+    if (isNewPin) {
+      return "limegreen";
+    }
+
+    // If not a new pin then set pin color based on pin type.
+    switch (pin.type) {
+      case "speed":
+        return "#262730";
+        break;
+      case "light":
+        return "#B99E38";
+        break;
+      case "other":
+        return "#7FB069";
+        break;
+      default:
+    }
   };
 
   const handleSelectPin = pin => {
