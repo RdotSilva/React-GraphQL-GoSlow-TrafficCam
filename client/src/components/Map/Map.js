@@ -3,6 +3,7 @@ import ReactMapGL, { NavigationControl, Marker, Popup } from "react-map-gl";
 import { withStyles } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import PinIcon from "./PinIcon";
+import Legend from "./Legend";
 import Blog from "../Blog/Blog";
 import differenceInMinutes from "date-fns/differenceInMinutes";
 import Button from "@material-ui/core/Button";
@@ -149,6 +150,8 @@ const Map = ({ classes }) => {
         onClick={handleMapClick}
         {...viewport}
       >
+        {/* Legend */}
+        <Legend />
         {/* Navigation Control */}
         <div className={classes.navigationControl}>
           <NavigationControl
