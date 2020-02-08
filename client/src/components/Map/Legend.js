@@ -11,7 +11,7 @@ const Legend = ({ classes }) => {
       <div className={classes.lightCam}>
         <PlaceTwoTone /> Light Camera
       </div>
-      <div>
+      <div className={classes.otherCam}>
         <PlaceTwoTone /> Other Camera
       </div>
       <div className={classes.yourLocation}>
@@ -30,8 +30,8 @@ const styles = {
     top: 10,
     right: 10,
     zIndex: 1,
-    width: 150,
-    height: 120,
+    width: 130,
+    height: 100,
     backgroundColor: "white",
     borderRadius: 5
   },
@@ -49,6 +49,12 @@ const styles = {
   },
   lightCam: {
     color: "#B99E38",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  otherCam: {
+    color: "#7FB069",
     display: "flex",
     justifyContent: "center",
     alignItems: "center"
