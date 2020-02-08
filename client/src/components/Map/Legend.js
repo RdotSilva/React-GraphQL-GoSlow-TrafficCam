@@ -38,25 +38,21 @@ const styles = {
   yourLocation: {
     color: "#EA4335",
     display: "flex",
-    justifyContent: "center",
     alignItems: "center"
   },
   speedCam: {
     color: "#262730",
     display: "flex",
-    justifyContent: "center",
     alignItems: "center"
   },
   lightCam: {
     color: "#B99E38",
     display: "flex",
-    justifyContent: "center",
     alignItems: "center"
   },
   otherCam: {
     color: "#7FB069",
     display: "flex",
-    justifyContent: "center",
     alignItems: "center"
   }
 };
