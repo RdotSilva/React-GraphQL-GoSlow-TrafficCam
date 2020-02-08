@@ -11,6 +11,7 @@ import CancelIcon from "@material-ui/icons/Cancel";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import Select from "@material-ui/core/Select";
 import axios from "axios";
 
@@ -171,7 +172,11 @@ const CreatePin = ({ classes }) => {
           onClick={handleSubmit}
         >
           {submitting ? "Submitting..." : "Submit"}
-          <PublishIcon className={classes.rightIcon} />
+          {submitting ? (
+            <CircularProgress size={20} />
+          ) : (
+            <PublishIcon className={classes.rightIcon} />
+          )}
         </Button>
       </div>
     </form>
