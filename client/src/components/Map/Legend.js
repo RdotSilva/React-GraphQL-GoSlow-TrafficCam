@@ -40,6 +40,12 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center"
+  },
+  speedCam: {
+    color: "#262730",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
   }
 };
 
