@@ -14,7 +14,7 @@ const Legend = ({ classes }) => {
       <div>
         <PlaceTwoTone /> Other Camera
       </div>
-      <div>
+      <div className={classes.yourLocation}>
         <PlaceTwoTone /> Your Location
       </div>
     </div>
@@ -34,6 +34,12 @@ const styles = {
     height: 120,
     backgroundColor: "white",
     borderRadius: 5
+  },
+  yourLocation: {
+    color: "#EA4335",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
   }
 };
 
