@@ -206,7 +206,7 @@ const styles = theme => ({
   iconLarge: {
     fontSize: 40,
     marginRight: theme.spacing.unit,
-    color: "red"
+    color: "#EA4335"
   },
   leftIcon: {
     fontSize: 20,
