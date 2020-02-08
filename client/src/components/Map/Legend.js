@@ -8,6 +8,15 @@ const Legend = ({ classes }) => {
       <div>
         <PlaceTwoTone /> Speed Camera
       </div>
+      <div>
+        <PlaceTwoTone /> Light Camera
+      </div>
+      <div>
+        <PlaceTwoTone /> Other Camera
+      </div>
+      <div>
+        <PlaceTwoTone /> Your Location
+      </div>
     </div>
   );
 };
@@ -21,8 +30,8 @@ const styles = {
     top: 10,
     right: 10,
     zIndex: 1,
-    width: 100,
-    height: 100,
+    width: 150,
+    height: 120,
     backgroundColor: "white",
     borderRadius: 5
   }
