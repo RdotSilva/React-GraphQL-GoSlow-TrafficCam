@@ -166,7 +166,7 @@ const Map = ({ classes }) => {
             offsetLeft={-19}
             offsetTop={-37}
           >
-            <PinIcon size={40} color="red" label="Your Location"></PinIcon>
+            <PinIcon size={40} color="#EA4335"></PinIcon>
           </Marker>
         )}
         {/* Draft Pin */}
