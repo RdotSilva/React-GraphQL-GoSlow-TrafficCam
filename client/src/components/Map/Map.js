@@ -193,7 +193,7 @@ const Map = ({ classes }) => {
             offsetLeft={-19}
             offsetTop={-37}
           >
-            <PinIcon size={40} color="hotpink" label="Draft Pin"></PinIcon>
+            <PinIcon size={40} color="hotpink" label="Add Cam"></PinIcon>
           </Marker>
         )}
         {/* Created Pins */}
@@ -209,7 +209,6 @@ const Map = ({ classes }) => {
               onClick={() => handleSelectPin(pin)}
               size={40}
               color={highlightNewPin(pin)}
-              label={pin.type}
             />
           </Marker>
         ))}
