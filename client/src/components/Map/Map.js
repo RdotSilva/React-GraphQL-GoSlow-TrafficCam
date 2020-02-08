@@ -259,7 +259,7 @@ const styles = {
     margin: "1em"
   },
   deleteIcon: {
-    color: "red",
+    color: "#EA4335",
     height: 40,
     width: 40
   },
