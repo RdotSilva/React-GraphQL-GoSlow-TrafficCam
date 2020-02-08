@@ -2,8 +2,14 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import PlaceTwoTone from "@material-ui/icons/PlaceTwoTone";
 
-const Legend = () => {
-  return <div></div>;
+const Legend = ({ classes }) => {
+  return (
+    <div className={classes.legend}>
+      <div>
+        <PlaceTwoTone /> Speed Camera
+      </div>
+    </div>
+  );
 };
 
 const styles = {
