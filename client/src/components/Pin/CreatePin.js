@@ -170,7 +170,7 @@ const CreatePin = ({ classes }) => {
           }
           onClick={handleSubmit}
         >
-          Submit
+          {submitting ? "Submitting..." : "Submit"}
           <PublishIcon className={classes.rightIcon} />
         </Button>
       </div>
