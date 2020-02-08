@@ -5,10 +5,10 @@ import PlaceTwoTone from "@material-ui/icons/PlaceTwoTone";
 const Legend = ({ classes }) => {
   return (
     <div className={classes.legend}>
-      <div>
+      <div className={classes.speedCam}>
         <PlaceTwoTone /> Speed Camera
       </div>
-      <div>
+      <div className={classes.lightCam}>
         <PlaceTwoTone /> Light Camera
       </div>
       <div>
@@ -43,6 +43,12 @@ const styles = {
   },
   speedCam: {
     color: "#262730",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  lightCam: {
+    color: "#B99E38",
     display: "flex",
     justifyContent: "center",
     alignItems: "center"
