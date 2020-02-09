@@ -35,6 +35,9 @@ export const GET_PINS_QUERY = `
         picture
       }
     }
+    votes {
+      _id
+    }
   }
 }
 `;
