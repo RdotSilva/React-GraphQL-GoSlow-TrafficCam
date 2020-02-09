@@ -51,6 +51,16 @@ module.exports = {
         .populate("comments.author");
       pubsub.publish(PIN_UPDATED, { pinUpdated });
       return pinUpdated;
+    }),
+    addVote: authenticated(async (root, args, ctx) => {
+      const addedVote = { user: ctx.currentUser._id };
+      const pinUpdated = await Pin.findByIdAndUpdate(
+        { _id: args.pinId },
+        { $addToSet: { votes: addedVote } },
+        { new: true }
+      );
+      pubsub.publish(PIN_UPDATED, { pinUpdated });
+      return pinUpdated;
     })
   },
   Subscription: {
