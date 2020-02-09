@@ -27,6 +27,12 @@ const Vote = ({ classes }) => {
     await client.request(ADD_VOTE_MUTATION, variables);
   };
 
+  const handleRemoveVote = async () => {
+    const variables = { pinId: state.currentPin._id, userId: currentUser._id };
+
+    await client.request(REMOVE_VOTE_MUTATION, variables);
+  };
+
   return (
     <>
       <IconButton onClick={handleAddVote} className={classes.sendButton}>
