@@ -17,6 +17,7 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error(err));
 
+// GraphQL server
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -27,7 +28,7 @@ const server = new ApolloServer({
     try {
       authToken = req.headers.authorization;
       if (authToken) {
-        // Find user or creat a new user in DB
+        // Find user if they exist, if not create new user in DB
         currentUser = await findOrCreateUser(authToken);
       }
     } catch (err) {
