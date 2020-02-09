@@ -27,4 +27,23 @@ const Vote = ({ classes }) => {
   );
 };
 
+const styles = theme => ({
+  form: {
+    display: "flex",
+    alignItems: "center"
+  },
+  input: {
+    marginLeft: 8,
+    flex: 1
+  },
+  clearButton: {
+    padding: 0,
+    color: "red"
+  },
+  sendButton: {
+    padding: 0,
+    color: theme.palette.secondary.dark
+  }
+});
+
 export default withStyles(styles)(Vote);
