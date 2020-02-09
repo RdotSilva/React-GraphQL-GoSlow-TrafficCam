@@ -93,7 +93,7 @@ mutation($pinId: ID!, $userId: ID!) {
 
 export const REMOVE_VOTE_MUTATION = `
 mutation($pinId: ID!, $userId: ID!) {
-  addVote(pinId: $pinId, userId: $userId) {
+  removeVote(pinId: $pinId, userId: $userId) {
     _id
     createdAt
     title
