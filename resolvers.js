@@ -53,20 +53,18 @@ module.exports = {
       return pinUpdated;
     }),
     addVote: authenticated(async (root, args, ctx) => {
-      const addedVote = { user: ctx.currentUser._id };
       const pinUpdated = await Pin.findByIdAndUpdate(
         { _id: args.pinId },
-        { $addToSet: { votes: addedVote } },
+        { $addToSet: { votes: ctx.currentUser._id } },
         { new: true }
       );
       pubsub.publish(PIN_UPDATED, { pinUpdated });
       return pinUpdated;
     }),
     removeVote: authenticated(async (root, args, ctx) => {
-      const removedVote = { user: ctx.currentUser._id };
       const pinUpdated = await Pin.findByIdAndUpdate(
         { _id: args.pinId },
-        { $pull: { votes: removedVote } },
+        { $pull: { votes: ctx.currentUser._id } },
         { new: true }
       );
       pubsub.publish(PIN_UPDATED, { pinUpdated });
