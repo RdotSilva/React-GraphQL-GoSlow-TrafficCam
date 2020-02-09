@@ -17,6 +17,12 @@ const PinSchema = new mongoose.Schema(
         // Populate author from user data by using the user ID
         author: { type: mongoose.Schema.ObjectId, ref: "User" }
       }
+    ],
+    votes: [
+      {
+        type: Schema.Types.ObjectId,
+        default: []
+      }
     ]
   },
   { timestamps: true }
