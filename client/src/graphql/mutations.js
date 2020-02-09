@@ -90,3 +90,33 @@ mutation($pinId: ID!, $userId: ID!) {
   }
 }
 `;
+
+export const REMOVE_VOTE_MUTATION = `
+mutation($pinId: ID!, $userId: ID!) {
+  addVote(pinId: $pinId, userId: $userId) {
+    _id
+    createdAt
+    title
+    content
+    type
+    image
+    latitude
+    longitude
+    author {
+      _id
+      name
+    }
+    comments {
+      text
+      createdAt
+      author {
+        name
+        picture
+      }
+    }
+    votes {
+      _id
+    }
+  }
+}
+`;
