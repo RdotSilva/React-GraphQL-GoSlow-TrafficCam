@@ -52,6 +52,9 @@ export const PIN_UPDATED_SUBSCRIPTION = gql`
           picture
         }
       }
+      votes {
+        _id
+      }
     }
   }
 `;
