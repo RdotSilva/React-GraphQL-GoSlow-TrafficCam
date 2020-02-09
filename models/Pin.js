@@ -20,7 +20,7 @@ const PinSchema = new mongoose.Schema(
     ],
     votes: [
       {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         default: []
       }
     ]
