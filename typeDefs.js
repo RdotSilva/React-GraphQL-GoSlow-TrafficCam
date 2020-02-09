@@ -46,6 +46,8 @@ module.exports = gql`
     createPin(input: CreatePinInput!): Pin
     deletePin(pinId: ID!): Pin
     createComment(pinId: ID!, text: String!): Pin
+    addVote(pinID: ID!, user: ID!): Pin
+    removeVote(pinID: ID!, user: ID!): Pin
   }
 
   type Subscription {
