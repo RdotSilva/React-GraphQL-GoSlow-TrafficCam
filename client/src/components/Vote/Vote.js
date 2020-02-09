@@ -15,6 +15,18 @@ import { useClient } from "../../hooks/useClient";
 import Context from "../../context/context";
 
 const Vote = ({ classes }) => {
+  const client = useClient();
+
+  const { state, dispatch } = useContext(Context);
+
+  const { currentUser } = state;
+
+  const handleAddVote = async () => {
+    const variables = { pinId: state.currentPin._id, userId: currentUser._id };
+
+    await client.request(ADD_VOTE_MUTATION, variables);
+  };
+
   return (
     <>
       <IconButton onClick={handleAddVote} className={classes.sendButton}>
