@@ -21,7 +21,8 @@ const PinContent = ({ classes }) => {
     type,
     author,
     createdAt,
-    comments
+    comments,
+    votes
   } = state.currentPin;
 
   // Check what type of camera and return the correct Icon.
@@ -71,7 +72,7 @@ const PinContent = ({ classes }) => {
         {content}
       </Typography>
       {/* Votes */}
-      <Vote />
+      <Vote /> {votes.length}
       {/* Popup Dialog for Created Pins */}
       <CreateComment />
       <Comments comments={comments} />
