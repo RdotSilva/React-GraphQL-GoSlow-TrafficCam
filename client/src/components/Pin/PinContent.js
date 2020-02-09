@@ -10,6 +10,7 @@ import NotListedLocationTwoToneIcon from "@material-ui/icons/NotListedLocationTw
 import format from "date-fns/format";
 import CreateComment from "../Comments/CreateComment";
 import Comments from "../Comments/Comments";
+import Vote from "../Vote/Vote";
 
 const PinContent = ({ classes }) => {
   const { state } = useContext(Context);
@@ -69,6 +70,8 @@ const PinContent = ({ classes }) => {
       <Typography variant="subtitle1" gutterBottom>
         {content}
       </Typography>
+      {/* Votes */}
+      <Vote />
       {/* Popup Dialog for Created Pins */}
       <CreateComment />
       <Comments comments={comments} />
