@@ -114,6 +114,23 @@ const Map = ({ classes }) => {
     }
   };
 
+  // Check for camera type to display on popup
+  const displayCameraType = cameraType => {
+    switch (cameraType) {
+      case "speed":
+        return "Speed Camera";
+        break;
+      case "light":
+        return "Traffic Light Camera";
+        break;
+      case "other":
+        return "Other Camera";
+        break;
+      default:
+        break;
+    }
+  };
+
   const handleSelectPin = pin => {
     setPopup(pin);
     dispatch({ type: "SET_PIN", payload: pin });
