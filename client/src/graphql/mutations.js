@@ -22,6 +22,9 @@ mutation($title: String!, $image: String!, $type: String!, $content: String!, $l
       email
       picture
     }
+    votes {
+      _id
+    }
   }
 }
 `;
