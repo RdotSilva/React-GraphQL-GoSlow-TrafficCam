@@ -66,7 +66,7 @@ const PinContent = ({ classes }) => {
         gutterBottom
       >
         <ScheduleTwoToneIcon className={classes.icon} />
-        {format(Number(createdAt), "MM dd, yyyy H mm a")}
+        {format(Number(createdAt), "MM/dd/yyyy h:mm a")}
       </Typography>
       <Typography variant="subtitle1" gutterBottom>
         {content}
