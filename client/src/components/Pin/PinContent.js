@@ -27,15 +27,16 @@ const PinContent = ({ classes }) => {
 
   // Check what type of camera and return the correct Icon.
   const checkCameraType = cameraType => {
+    console.log("Camera Type:", cameraType);
     switch (cameraType) {
       case "speed":
-        return <SpeedTwoToneIcon />;
+        return <SpeedTwoToneIcon className={classes.cameraIcon} />;
         break;
       case "light":
-        return <TrafficTwoToneIcon />;
+        return <TrafficTwoToneIcon className={classes.cameraIcon} />;
         break;
       case "other":
-        return <NotListedLocationTwoToneIcon />;
+        return <NotListedLocationTwoToneIcon className={classes.cameraIcon} />;
         break;
       default:
         break;
@@ -47,10 +48,6 @@ const PinContent = ({ classes }) => {
       <Typography component="h2" variant="h4" color="primary" gutterBottom>
         {title}
       </Typography>
-      <Typography>
-        <PersonOutlineTwoToneIcon className={classes.icon} />
-        {author.name}
-      </Typography>
       <Typography
         className={classes.text}
         variant="subtitle2"
@@ -58,6 +55,10 @@ const PinContent = ({ classes }) => {
         gutterBottom
       >
         {checkCameraType(type)}
+      </Typography>
+      <Typography className={classes.text}>
+        <PersonOutlineTwoToneIcon className={classes.icon} />
+        {author.name}
       </Typography>
       <Typography
         className={classes.text}
@@ -94,6 +95,10 @@ const styles = theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
+  },
+  cameraIcon: {
+    width: 40,
+    height: 40
   }
 });
 
