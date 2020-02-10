@@ -34,7 +34,7 @@ const styles = {
     right: 10,
     zIndex: 1,
     width: 130,
-    height: 100,
+    height: 120,
     backgroundColor: "white",
     borderRadius: 5
   },
