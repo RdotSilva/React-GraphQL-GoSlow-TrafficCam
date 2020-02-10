@@ -57,7 +57,9 @@ module.exports = {
         { _id: args.pinId },
         { $addToSet: { votes: ctx.currentUser._id } },
         { new: true }
-      ).populate("author");
+      )
+        .populate("author")
+        .populate("comments.author");
       pubsub.publish(PIN_UPDATED, { pinUpdated });
       return pinUpdated;
     }),
@@ -66,7 +68,9 @@ module.exports = {
         { _id: args.pinId },
         { $pull: { votes: ctx.currentUser._id } },
         { new: true }
-      ).populate("author");
+      )
+        .populate("author")
+        .populate("comments.author");
       pubsub.publish(PIN_UPDATED, { pinUpdated });
       return pinUpdated;
     })
