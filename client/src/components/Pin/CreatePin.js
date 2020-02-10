@@ -29,6 +29,7 @@ const CreatePin = ({ classes }) => {
   const [image, setImage] = useState("");
   const [content, setContent] = useState("");
   const [type, setType] = useState("");
+  const [votes, setVotes] = useState([]);
   const [open, setOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
@@ -45,6 +46,7 @@ const CreatePin = ({ classes }) => {
     setImage("");
     setType("");
     setContent("");
+    setVotes([]);
     dispatch({ type: "DELETE_DRAFT" });
   };
 
@@ -75,6 +77,7 @@ const CreatePin = ({ classes }) => {
         image: url,
         content,
         type,
+        votes,
         latitude,
         longitude
       };
