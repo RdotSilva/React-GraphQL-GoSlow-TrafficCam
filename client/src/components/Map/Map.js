@@ -232,6 +232,7 @@ const Map = ({ classes }) => {
         {/* Popup Dialog for Created Pins */}
         {popup && (
           <Popup
+            tipSize={20}
             anchor="top"
             latitude={popup.latitude}
             longitude={popup.longitude}
