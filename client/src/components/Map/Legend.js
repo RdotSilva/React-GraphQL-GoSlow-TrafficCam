@@ -57,6 +57,11 @@ const styles = {
     color: "#7FB069",
     display: "flex",
     alignItems: "center"
+  },
+  recentCam: {
+    color: "#3C91E6",
+    display: "flex",
+    alignItems: "center"
   }
 };
 
