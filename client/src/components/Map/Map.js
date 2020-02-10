@@ -90,7 +90,7 @@ const Map = ({ classes }) => {
 
   // Check if a pin has been added recently added and highlight in different color for recently added pins.
   const highlightNewPin = pin => {
-    const minutesSincePinAdded = 30;
+    const minutesSincePinAdded = 5;
     const isNewPin =
       differenceInMinutes(Date.now(), Number(pin.createdAt)) <=
       minutesSincePinAdded;
