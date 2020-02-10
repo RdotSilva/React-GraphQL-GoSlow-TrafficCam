@@ -51,6 +51,24 @@ module.exports = {
         .populate("comments.author");
       pubsub.publish(PIN_UPDATED, { pinUpdated });
       return pinUpdated;
+    }),
+    addVote: authenticated(async (root, args, ctx) => {
+      const pinUpdated = await Pin.findByIdAndUpdate(
+        { _id: args.pinId },
+        { $addToSet: { votes: ctx.currentUser._id } },
+        { new: true }
+      );
+      pubsub.publish(PIN_UPDATED, { pinUpdated });
+      return pinUpdated;
+    }),
+    removeVote: authenticated(async (root, args, ctx) => {
+      const pinUpdated = await Pin.findByIdAndUpdate(
+        { _id: args.pinId },
+        { $pull: { votes: ctx.currentUser._id } },
+        { new: true }
+      );
+      pubsub.publish(PIN_UPDATED, { pinUpdated });
+      return pinUpdated;
     })
   },
   Subscription: {

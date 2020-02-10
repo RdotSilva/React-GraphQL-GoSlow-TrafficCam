@@ -19,6 +19,7 @@ module.exports = gql`
     longitude: Float
     author: User
     comments: [Comment]
+    votes: [User]
   }
 
   type Comment {
@@ -45,6 +46,8 @@ module.exports = gql`
     createPin(input: CreatePinInput!): Pin
     deletePin(pinId: ID!): Pin
     createComment(pinId: ID!, text: String!): Pin
+    addVote(pinId: ID!, userId: ID!): Pin
+    removeVote(pinId: ID!, userId: ID!): Pin
   }
 
   type Subscription {
