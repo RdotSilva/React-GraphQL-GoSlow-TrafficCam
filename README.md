@@ -1,6 +1,8 @@
 # React GraphQL Go Slow Traffic Map
 
-React Web application using GraphQL that allows users to track traffic cameras. Users can add a camera, specific a type of camera (speed / traffic light). Users can comment on a traffic camera pin to let others know if the camera is still active, moved to a new location, or currently broken.
+React Web application using GraphQL that allows users to track traffic cameras.
+
+Users select an area on the map to add a new camera pin. The pin contains traffic camera data including title, description, and an image of the camera (uploaded by a user). Each camera pin will have voting system where users can vote a camera up or down. Users can comment on a traffic camera pin to let others know if the camera is still active, moved to a new location, or is currently broken.
 
 ### Prerequisites
 
