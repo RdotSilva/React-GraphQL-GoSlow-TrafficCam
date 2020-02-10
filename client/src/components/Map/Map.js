@@ -96,7 +96,7 @@ const Map = ({ classes }) => {
       minutesSincePinAdded;
 
     if (isNewPin) {
-      return "limegreen";
+      return "#3C91E6";
     }
 
     // If not a new pin then set pin color based on pin type.
