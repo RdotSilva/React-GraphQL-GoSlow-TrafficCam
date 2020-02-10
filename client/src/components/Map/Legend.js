@@ -17,6 +17,9 @@ const Legend = ({ classes }) => {
       <div className={classes.yourLocation}>
         <PlaceTwoTone /> Your Location
       </div>
+      <div className={classes.recentCam}>
+        <PlaceTwoTone /> Recently Added
+      </div>
     </div>
   );
 };
