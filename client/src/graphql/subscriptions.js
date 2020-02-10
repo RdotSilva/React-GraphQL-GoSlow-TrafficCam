@@ -25,6 +25,9 @@ export const PIN_ADDED_SUBSCRIPTION = gql`
           picture
         }
       }
+      votes {
+        _id
+      }
     }
   }
 `;
