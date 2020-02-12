@@ -40,11 +40,11 @@ const styles = {
     display: "flex"
   },
   buttonText: {
-    color: "orange"
+    color: "black"
   },
   buttonIcon: {
     marginLeft: "5px",
-    color: "orange"
+    color: "black"
   }
 };
 
